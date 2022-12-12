@@ -1,0 +1,35 @@
+#Pietro Gagliardi 11916610
+
+
+def fibonacci(x):           
+    
+    if x > 1:                                   #inicialmente definimos o calculo da função de Fibonacci e suas restrições
+        fibonacci(x-1)+fibonacci(x-2)    
+    else:
+        return 1
+            
+            
+
+def fatorial(x):                                #Em seguida definimos o calculo da função fatorial e também suas restrições
+    
+    if x == 1:
+        return x
+    else:
+        return x*fatorial(x-1)
+        
+    
+    
+    file = open('atividade4.dat','r')          #Abrimos o arquivo selecionado que dará os valores para nossa saída, nesse caso o 'atividade 4'
+    dados = file.readlines()                   #lemos o arquivo e printamos os dados que iremos utilizar
+    print(dados)                               
+    lista = [numero.strip().split() for numero in dados]  #Printamos os dados da nossa nova lista
+
+    with open('atividade4.dat','w') as output:      #Definimos a saída e sua formatação desejada
+        
+        n = x
+        for item in lista:
+            z, y = item
+            a = fibonacci(int(z))
+            b = fatorial(int(y))
+            output.write(f"linha [n]: Fib{z}={a} Fact{y}={b}\n")
+            n+=1
